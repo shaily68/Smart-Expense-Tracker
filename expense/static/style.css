@@ -1,0 +1,115 @@
+/* 🌞 Light Mode Styles */
+body {
+    background: linear-gradient(to right, #047375, #0ddddd);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #212529;
+}
+
+.container {
+    max-width: 400px;
+    max-height: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    background: linear-gradient(to right, #ddeced, #e3f4f4);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+#expenseChart {
+  margin: 0 auto;
+  display: block;
+}
+
+/* Headings */
+h2, h4 {
+    text-align: center;
+    color: #333;
+}
+
+/* Form Styling */
+form input,
+form select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #195f87;
+    color: white;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #156b73;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+/* Buttons in table */
+.btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+/* Search Box */
+#searchBox {
+    margin-top: 20px;
+}
+
+/* Chart */
+canvas {
+    margin-top: 30px;
+}
+
+/* Toggle Button */
+#themeToggle {
+    float: right;
+    margin-bottom: 10px;
+}
+
+
+

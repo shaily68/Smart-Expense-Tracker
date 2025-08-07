@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+
+<div class="container mt-4">
+    <h2 class="text-center">Expense Tracker</h2>
+    
+
+    <!-- Add Expense Form -->
+    <form method="POST" action="/add" class="row g-3" onsubmit="return validateForm();">
+        <div class="col-md-3">
+            <input type="date" name="date" class="form-control" required>
+        </div>
+        <div class="col-md-3">
+            <select name="category" class="form-select" required>
+                <option value="">Select Category</option>
+                <option>Transport</option>
+                <option>Groceries</option>
+                <option>Recharge</option>
+                <option>Bills</option>
+                <option>Others</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="amount" class="form-control" placeholder="Amount" required>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="description" class="form-control" placeholder="Description" required>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-success w-100">Add</button>
+        </div>
+    </form>
+
+    <!-- Search Bar -->
+    <input type="text" id="searchBox" class="form-control mt-4" placeholder="Search expenses...">
+
+    <!-- Expense Table -->
+    <!-- Expense Table -->
+     
+<table class="table table-striped mt-3" id="expenseTable">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in expenses %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>₹{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>
+                <!-- Delete or Edit buttons here -->
+            </td>
+        </tr>
+        {% endfor %}
+        <!-- 🧮 Total Row -->
+        <tr>
+            <td colspan="2"><strong>Total:</strong></td>
+            <td><strong>₹{{ '%.2f' | format(total) }}</strong></td>
+            <td colspan="2"></td>
+        </tr>
+    </tbody>
+</table>
+<div class="container mt-4 p-4 rounded shadow-sm bg-white">
+  <h5 class="text-center mb-3">📊 Category-wise Expense Breakdown</h5>
+  <div class="d-flex justify-content-center">
+    <canvas id="expenseChart" width="220" height="0"></canvas>
+  </div>
+</div>
+</div>
+
+<!-- Edit Expense Modal -->
+<div class="modal fade" id="editModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" id="editForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Expense</h5>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" name="idx" id="editIdx">
+            <input type="date" name="date" id="editDate" class="form-control my-2" required>
+            <select name="category" id="editCategory" class="form-select my-2" required>
+                <option>Transport</option>
+                <option>Groceries</option>
+                <option>Recharge</option>
+                <option>Bills</option>
+                <option>Others</option>
+            </select>
+            <input type="number" name="amount" id="editAmount" class="form-control my-2" required>
+            <input type="text" name="description" id="editDescription" class="form-control my-2" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>
